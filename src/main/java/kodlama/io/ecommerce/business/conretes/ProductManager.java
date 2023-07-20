@@ -3,13 +3,15 @@ package kodlama.io.ecommerce.business.conretes;
 import kodlama.io.ecommerce.business.abstracts.ProductService;
 import kodlama.io.ecommerce.entities.conretes.Product;
 import kodlama.io.ecommerce.repository.abstracts.ProductRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 import java.util.List;
-@AllArgsConstructor
-@Service
+
+
 public class ProductManager implements ProductService {
     private final ProductRepository repository;
+
+    public ProductManager(ProductRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Product> getAll() {

@@ -2,15 +2,24 @@ package kodlama.io.ecommerce.api.controllers;
 
 import kodlama.io.ecommerce.business.abstracts.ProductService;
 import kodlama.io.ecommerce.entities.conretes.Product;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Service
 @RequestMapping("/api/products")
 public class ProductsController {
-    
+    public ProductsController(ProductService service) {
+        this.service = service;
+    }
+
+    private final ProductService service;
+
+
+
+
     @GetMapping
     public List<Product> getAll() {
         return service.getAll();
